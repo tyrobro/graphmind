@@ -1,0 +1,54 @@
+[project]
+name = "graphmind"
+version = "0.1.0"
+description = "Graph-theory-native memory management for AI agents"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "pydantic-settings>=2.6",
+    "sqlmodel>=0.0.22",
+    "neo4j>=5.26",
+    "networkx>=3.4",
+    "httpx>=0.27",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.7",
+    "mypy>=1.13",
+    "pytest>=8.3",
+    "pytest-cov>=6.0",
+    "hypothesis>=6.115",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+markers = [
+    "sprint0: environment and foundations",
+    "sprint1: data layer",
+    "sprint2: ingestion pipeline",
+    "sprint3: pruning engine",
+    "sprint4: retrieval",
+    "sprint5: api and scheduler",
+    "sprint6: mcp server and cli",
+    "sprint7: graph visualizer",
+    "sprint8: benchmark harness",
+    "sprint9: benchmark runs and release",
+    "live: requires a real Ollama model, slower",
+]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["app"]

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+N=$(cat SPRINT)
+echo "pre-push: running gate for sprint $N"
+make gate N=$N
+
+chmod +x .githooks/pre-push
